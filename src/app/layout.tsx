@@ -22,7 +22,9 @@ export const metadata: Metadata = {
     'spotify, spotify clone, playlist music, music player, j-pop, k-pop, pop-punk, lofi, western',
   applicationName: 'Spotify',
   robots: { index: true, follow: false },
-  metadataBase: new URL(process.env.URL_METADATABASE || ''),
+  metadataBase: new URL(
+    process.env.URL_METADATABASE || 'http://localhost:3000/',
+  ),
   alternates: {
     canonical: '/',
     languages: {
