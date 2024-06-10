@@ -71,7 +71,7 @@ devDependencies:
     specifier: ^8
     version: 8.4.38
   tailwindcss:
-    specifier: ^3.4.1
+    specifier: ^3.4.4
     version: 3.4.4(ts-node@10.9.2)
   ts-jest:
     specifier: ^29.1.4
