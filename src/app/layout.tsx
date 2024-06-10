@@ -20,12 +20,19 @@ export const metadata: Metadata = {
   },
   keywords:
     'spotify, spotify clone, playlist music, music player, j-pop, k-pop, pop-punk, lofi, western',
-  applicationName: 'Spotify Clone',
+  applicationName: 'Spotify',
   robots: { index: true, follow: false },
+  metadataBase: new URL(process.env.URL_METADATABASE || ''),
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en-US': '/en-US',
+    },
+  },
   openGraph: {
     type: 'music.playlist',
     url: 'https://open.yawwi.click/playlist',
-    title: 'Spotify Clone',
+    title: 'Spotify',
     description:
       'Spotify is a digital music service that gives you access to millions of songs.',
     images: ['/manifest/icon-512.png'],
