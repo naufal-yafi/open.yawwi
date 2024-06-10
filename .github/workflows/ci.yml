@@ -12,14 +12,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup project
-        run: npm i -g pnpm typescript && pnpm i
-
-      - name: Functional test
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
-          test: pnpm test
+
+      - name: Setup project
+        run: npm i -g pnpm typescript && pnpm i
+
+      - name: Functional testing
+        run: pnpm test
 
       - name: Build, Start and Test
         uses: cypress-io/github-action@v5
