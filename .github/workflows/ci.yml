@@ -10,22 +10,25 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '20.x'
 
       - name: Setup project
         run: npm i -g pnpm typescript && pnpm i
 
+      - name: Lint check
+        run: pnpm lint
+
       - name: Functional testing
         run: pnpm test
 
-      - name: Build, Start and Test
-        uses: cypress-io/github-action@v5
+      - name: Build, Start, Test
+        uses: cypress-io/github-action@v6
         with:
+          browser: edge
           build: pnpm build
           start: pnpm start
-          cypress: pnpm cypress
