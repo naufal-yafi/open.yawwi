@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test:cypress": "cypress run",
-    "test:jest": "jest",
+    "cypress": "cypress open",
+    "test": "jest",
     "lint": "next lint"
   },
   "dependencies": {
