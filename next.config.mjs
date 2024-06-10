@@ -3,6 +3,7 @@ const nextConfig = {
   compress: true,
   experimental: {
     optimizeCss: true,
+    forceSwcTransforms: true,
   },
   optimizeFonts: true,
 };
