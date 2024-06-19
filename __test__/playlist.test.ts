@@ -2,13 +2,14 @@ import playlists from '@data/playlist.data';
 import { describe, expect, test } from '@jest/globals';
 import { PlaylistType } from '@type/playlist';
 import { checkEmpty } from './__lib__';
+import { getPlaylistByName } from '@service/playlist-service';
 
 describe('data', () => {
   test('must not be empty data', () => {
-    let countEmptyUuid: number = 0;
-    let countEmptyGenre: number = 0;
-    let countEmptyName: number = 0;
-    let countEmptyMusic: number = 0;
+    let countEmptyUuid: number = 0,
+      countEmptyGenre: number = 0,
+      countEmptyName: number = 0,
+      countEmptyMusic: number = 0;
 
     playlists.map((playlist: PlaylistType) => {
       countEmptyUuid += checkEmpty<string, string>(playlist.uuid, '');
@@ -38,4 +39,12 @@ describe('data', () => {
   });
 });
 
-describe('service', () => {});
+describe('service', () => {
+  test('passed case: get playlist by name', () => {
+    expect(getPlaylistByName('Favorite').uuid).toEqual('asd');
+  });
+
+  test('error case: empty result get playlist by name', () => {
+    expect(getPlaylistByName('Pop').uuid).toEqual('');
+  });
+});

@@ -6,8 +6,8 @@ import { checkEmpty } from './__lib__';
 
 describe('data', () => {
   test('must not be empty', () => {
-    let countEmptyArtistName: number = 0;
-    let countEmptyArtistPhoto: number = 0;
+    let countEmptyArtistName: number = 0,
+      countEmptyArtistPhoto: number = 0;
 
     artists.map((artist: artistType) => {
       countEmptyArtistName += checkEmpty<string, string>(artist.name, '');

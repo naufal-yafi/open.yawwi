@@ -15,39 +15,70 @@ import {
   mapWrongCheck,
   mapWrongFormatCheck,
 } from './__function__';
+import { MusicType } from '@type/music';
+import { checkFile } from './__lib__';
 
 describe('data', () => {
   test('must not be empty', () => {
-    const jpop: mapEmptyCheckType = mapEmptyCheck(musics.jpop);
+    const jpop: mapEmptyCheckType = mapEmptyCheck(musics.jpop),
+      lofi: mapEmptyCheckType = mapEmptyCheck(musics.lofi);
 
     expect(jpop.countEmptyTitle).toEqual(0);
     expect(jpop.countEmptyArtist).toEqual(0);
     expect(jpop.countEmptyNameFile).toEqual(0);
     expect(jpop.countEmptyImageAlbum).toEqual(0);
+    expect(lofi.countEmptyTitle).toEqual(0);
+    expect(lofi.countEmptyArtist).toEqual(0);
+    expect(lofi.countEmptyNameFile).toEqual(0);
+    expect(lofi.countEmptyImageAlbum).toEqual(0);
   });
 
   test('minutes and seconds format must be correct', () => {
-    const jpop: mapWrongCheckType = mapWrongCheck(musics.jpop);
+    const jpop: mapWrongCheckType = mapWrongCheck(musics.jpop),
+      lofi: mapWrongCheckType = mapWrongCheck(musics.lofi);
 
     expect(jpop.countWrongMinuteDuration).toEqual(0);
     expect(jpop.countWrongSecondDuration).toEqual(0);
+    expect(lofi.countWrongMinuteDuration).toEqual(0);
+    expect(lofi.countWrongSecondDuration).toEqual(0);
   });
 
   test('photo and name file format must be mp3', () => {
-    const jpop: mapWrongFormatCheckType = mapWrongFormatCheck(musics.jpop);
+    const jpop: mapWrongFormatCheckType = mapWrongFormatCheck(musics.jpop),
+      lofi: mapWrongFormatCheckType = mapWrongFormatCheck(musics.lofi);
 
     expect(jpop.countWrongExtPhoto).toEqual(0);
     expect(jpop.countWrongExtNameFile).toEqual(0);
+    expect(lofi.countWrongExtPhoto).toEqual(0);
+    expect(lofi.countWrongExtNameFile).toEqual(0);
+  });
+
+  test('file must be available', () => {
+    let countNotAvailable: number = 0;
+
+    musics.jpop.map((music: MusicType) => {
+      if (!checkFile(music.name_file, './public/music/favorite')) {
+        countNotAvailable++;
+      }
+    });
+
+    musics.lofi.map((music: MusicType) => {
+      if (!checkFile(music.name_file, './public/music/lofi')) {
+        countNotAvailable++;
+      }
+    });
+
+    expect(countNotAvailable).toEqual(0);
   });
 });
 
 describe('service', () => {
-  test('get music by title', () => {
+  test('passed case: get music by title', () => {
     expect(getMusicByTitle('Anone').title).toEqual('Anone');
     expect(getMusicByTitle('Aoboshi').title).toEqual('Aoboshi');
   });
 
-  test('empty result get music by title', () => {
+  test('error case: empty result get music by title', () => {
     expect(getMusicByTitle('asimilikiti').title).toEqual('');
   });
 
