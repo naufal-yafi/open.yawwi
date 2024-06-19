@@ -31,6 +31,16 @@ const config: Config = {
   // coveragePathIgnorePatterns: [
   //   "\\\\node_modules\\\\"
   // ],
+  coveragePathIgnorePatterns: [
+    '<rootDir>/__test__/__function__',
+    '<rootDir>/__test__/__lib__/index.ts',
+    '<rootDir>/__test__/__types__',
+    '<rootDir>/src/app',
+    '<rootDir>/src/components',
+    '<rootDir>/src/styles',
+    '<rootDir>/src/hooks',
+    '<rootDir>/src/styles',
+  ],
 
   // Indicates which provider should be used to instrument code for coverage
   // coverageProvider: "babel",
@@ -171,6 +181,15 @@ const config: Config = {
   // testPathIgnorePatterns: [
   //   "\\\\node_modules\\\\"
   // ],
+  testPathIgnorePatterns: [
+    '<rootDir>/__test__/__function__',
+    '<rootDir>/__test__/__types__',
+    '<rootDir>/src/app',
+    '<rootDir>/src/components',
+    '<rootDir>/src/styles',
+    '<rootDir>/src/hooks',
+    '<rootDir>/src/styles',
+  ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],
